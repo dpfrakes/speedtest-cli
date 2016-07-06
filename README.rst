@@ -119,3 +119,8 @@ There are several concepts to be aware of that factor into the potential inconsi
 
 Issues relating to inconsistencies will be closed as wontfix and without
 additional reason or context.
+
+Logging
+-------
+This forked repository includes a logging feature that will log the speed test results
+to a CSV file.

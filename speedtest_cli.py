@@ -22,6 +22,7 @@ import math
 import signal
 import socket
 import timeit
+import time
 import platform
 import threading
 
@@ -358,6 +359,18 @@ def uploadSpeed(url, sizes, quiet=False):
         cons_thread.join(timeout=0.1)
     return (sum(finished) / (timeit.default_timer() - start))
 
+def logSpeed(down, up):
+    """Logs the speed results and current date & time"""
+    speedlog = open('speedlog.csv', 'w')
+    speedlog.write(time.strftime("%d/%m/%Y"))
+    speedlog.write(',')
+    speedlog.write(time.strftime('%H:%M:%S'))
+    speedlog.write(',')
+    speedlog.write('%0.2f' % down)
+    speedlog.write(',')
+    speedlog.write('%0.2f' % up)
+    speedlog.write('\n')
+    speedlog.close()
 
 def getAttributesByTagName(dom, tagName):
     """Retrieve an attribute from an XML document and return it in a
@@ -734,6 +747,8 @@ def speedtest():
         print_()
     print_('Upload: %0.2f M%s/s' %
            ((ulspeed / 1000 / 1000) * args.units[1], args.units[0]))
+
+    logSpeed(dlspeed, ulspeed)
 
     if args.share and args.mini:
         print_('Cannot generate a speedtest.net share results image while '
