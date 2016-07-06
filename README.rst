@@ -124,3 +124,7 @@ Logging
 -------
 This forked repository includes a logging feature that will log the speed test results
 to a CSV file.
+
+# TODO
+* Generate JSON instead of CSV
+* Include server info, ping time, etc 

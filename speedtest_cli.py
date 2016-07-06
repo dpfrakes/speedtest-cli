@@ -361,7 +361,7 @@ def uploadSpeed(url, sizes, quiet=False):
 
 def logSpeed(down, up):
     """Logs the speed results and current date & time"""
-    speedlog = open('speedlog.csv', 'w')
+    speedlog = open('speedlog.csv', 'a')
     speedlog.write(time.strftime("%d/%m/%Y"))
     speedlog.write(',')
     speedlog.write(time.strftime('%H:%M:%S'))
